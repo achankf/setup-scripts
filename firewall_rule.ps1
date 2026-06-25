@@ -1,5 +1,11 @@
+# remove all trashes
 Remove-NetFirewallRule
 
+# block all connections and turn the firewall into a whitelist
+Set-NetFirewallProfile -Profile Domain,Private,Public -DefaultInboundAction Block
+Set-NetFirewallProfile -Profile Domain,Private,Public -DefaultOutboundAction Block
+
+# add minimal set of rules
 New-NetFirewallRule -DisplayName "Allow DHCP Outbound" `
                     -Program "%SystemRoot%\system32\svchost.exe" `
                     -Direction Outbound `
