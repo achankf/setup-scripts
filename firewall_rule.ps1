@@ -30,6 +30,7 @@ New-NetFirewallRule -DisplayName "Allow DHCP Outbound" `
                     -Protocol TCP `
                     -Profile Public
 
+# temporary rules for one-off operations, like updating the OS, or debugging; disabled by default
 New-NetFirewallRule -DisplayName "Temporary allow all outgoing TCP connections" `
 		   -Direction Outbound `
 		   -Action Allow `
